@@ -1,0 +1,134 @@
+
+\documentclass[
+	12pt,				
+	oneside,
+	a4paper,
+	english,
+	brazil,
+	]{abntex2}
+
+\usepackage{tcc} 								% Customizacoes
+
+% Pacotes fundamentais 
+\usepackage{lmodern}								% Fonte Latin Modern
+\usepackage[T1]{fontenc}							% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}						% Codificacao do documento (acentos)
+\usepackage{lastpage}							% Usado pela Ficha catalografica
+\usepackage{indentfirst}							% Indenta o primeiro paragrafo de cada secao.
+\usepackage{color}								% Controle das cores
+\usepackage{graphicx}							% Inclusao de graficos
+\usepackage{microtype} 							% Melhorias de justificacao
+\usepackage[alf,abnt-emphasize=bf]{abntex2cite}	% Citacoes padrao ABNT
+\usepackage{lipsum}								% Geracao automatica de textos de exemplo
+% ---
+	
+% Pacotes de citações
+\usepackage[brazilian,hyperpageref]{backref}	 
+\usepackage[alf]{abntex2cite}					% Citações padrão ABNT
+
+% Informações de dados para CAPA e FOLHA DE ROSTO
+\titulo{\Large{o titulo do trabalho}}
+\autor{\textbf{Seu nome aqui}}
+\local{Salvador (BA)}
+\data{2021}
+
+\instituicao{\textbf{Centro Universitário Senai Cimatec}}
+\filiacao{ESPECIALIZAÇÃO EM DATA SCIENCE \& ANALYTICS}
+\orientador{Seu orientador}
+
+\preambulo{Projeto  apresentado  ao  CENTRO UNIVERSITÁRIO  SENAI  CIMATEC como requisito parcial para obtenção do  título  de  Especialista  em  Data Science \& Analytics.}
+% ---
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico}, 
+		bookmarksdepth=4
+}
+\makeatother
+% --- 
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Compila o índice
+\makeindex
+
+
+% Início do documento
+\begin{document}
+
+
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PRÉ-TEXTUAIS
+% ----------------------------------------------------------
+\pretextual
+
+\imprimircapa
+\imprimirfolhaderosto*
+\imprimirdeclaracaoisencao
+
+% inserir lista de ilustrações
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+% ---
+
+% inserir lista de tabelas
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+% ---
+
+% ---
+% inserir o sumario
+% ---
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
+% ---
+
+
+% ----------------------------------------------------------
+% ELEMENTOS TEXTUAIS
+% ----------------------------------------------------------
+\textual
+
+
+% ------------------
+% ELEMENTOS TEXTUAIS
+% ------------------
+\textual
+
+\include{introducao/introducao}
+\include{motivacao/motivacao}
+\include{objetivo/objetivo}
+\include{fundamentacao/fundamentacao}
+\include{metodologia/metodologia}
+\include{resultados/resultados}
+\include{conclusao/conclusao}
+
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% Referências bibliográficas
+\bibliography{referencias}
+
+\end{document}

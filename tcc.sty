@@ -1,0 +1,139 @@
+% Declaracao do pacote de estilos
+\ProvidesPackage{tcc}[2021/06/17 AbnTeX]
+
+% Pacote necessario para inclusao do brasao na capa
+\RequirePackage{graphicx}
+
+% Novos comandos para inclusao do departamento e da filiacao
+\providecommand{\imprimirdepartamento}{}
+\newcommand{\departamento}[1]{\renewcommand{\imprimirdepartamento}{#1}}
+
+\providecommand{\imprimirfiliacao}{}
+\newcommand{\filiacao}[1]{\renewcommand{\imprimirfiliacao}{#1}}
+% --
+
+% Novos comandos para legendas de figuras e tabelas
+\newcommand{\fea}{\legend{Fonte: Elaborada pelo autor.}}
+\newcommand{\fbe}[1]{\legend{Fonte: Elaborada pelo autor, baseado em \citeonline{#1}.}}
+\newcommand{\fol}[1]{\legend{Fonte: \citeonline{#1}.}}
+\newcommand{\fdp}{\legend{Fonte: Dados da pesquisa.}}
+
+% Novos comandos para incluir declaração de isenção
+\providecommand{\imprimirdeclaracaoisencao}{}
+ 
+
+% ----
+% CAPA
+% ----
+\renewcommand{\imprimircapa}{
+	\begin{capa}
+		
+		\center
+
+		\begin{figure}
+        \centering
+        \includegraphics[scale=0.38]{brasao.png}
+      	\end{figure}
+      	
+      	\vspace*{0.2cm}
+		
+		\setlength{\parskip}{0.01cm}
+		\ABNTEXchapterfont\large\MakeUppercase\imprimirinstituicao\par
+		\ABNTEXchapterfont\MakeUppercase\imprimirdepartamento\par
+		\ABNTEXchapterfont\MakeUppercase\imprimirfiliacao\par
+		\setlength{\parskip}{0.2cm}
+				
+		\vspace*{2.5cm}
+
+		{\ABNTEXchapterfont\large\MakeUppercase\imprimirautor}
+		
+		\vspace*{4cm}
+		
+		\begin{center}
+		\ABNTEXchapterfont\bfseries\large\MakeUppercase\imprimirtitulo
+		\end{center}
+		\vfill
+				
+		\ABNTEXchapterfont\imprimirlocal
+
+		\ABNTEXchapterfont\imprimirdata
+		
+	\end{capa}
+}
+
+
+% --------------
+% DECLARAÇÃO DE ISENÇÃO
+% --------------
+\renewcommand{\imprimirdeclaracaoisencao}{
+	\begin{center}	
+		\large\textbf{DECLARAÇÃO DE ISENÇAO DE RESPONSABILIDADE}
+	\end{center}
+	
+	\vspace*{1cm}
+
+	\begin{flushleft}	
+	Através deste Instrumento, inseto meu Orientador e a Banca Examinadora de qualquer responsabilidade sobre o aporte ideológico e bases de dados utilizadas conferido ao presente trabalho.
+	\end{flushleft}
+
+	\begin{flushleft}
+	\setlength{\ABNTEXsignwidth}{11cm}
+	\assinatura*{
+		\begin{flushleft}
+			Aluno(a): \\ CPF:
+		\end{flushleft}}
+	\end{flushleft}
+		
+	\cleardoublepage
+}
+
+
+% --------------
+% FOLHA DE ROSTO
+% --------------
+
+\renewcommand{\folhaderostocontent}{
+  \begin{center}
+
+ 	\begin{figure}
+    \centering
+    \includegraphics[scale=0.30]{brasao.png}
+    	\end{figure}      	
+    \vspace*{1cm}   
+       	
+    {\ABNTEXchapterfont\large\MakeUppercase\imprimirautor}
+    \vspace*{2cm}
+
+    \par
+    \vspace*{\fill}\vspace*{\fill}   
+    {\ABNTEXchapterfont\bfseries\large\MakeUppercase\imprimirtitulo}
+    \vspace*{\fill}
+
+    \par
+    \abntex@ifnotempty{\imprimirpreambulo}{
+      \hspace*{7cm}
+      \begin{minipage}{.5\textwidth}
+        \SingleSpacing
+        \imprimirpreambulo
+      \end{minipage}
+      \vspace*{\fill}
+    }
+    \vspace*{1cm}
+
+    \par   
+    {\hspace*{7cm}
+    \begin{minipage}{.5\textwidth}
+      \SingleSpacing
+      \imprimirorientadorRotulo~\imprimirorientador
+      \par
+    \end{minipage}
+    }
+    \vspace*{\fill}
+
+    \par    
+    {\ABNTEXchapterfont\imprimirlocal}
+
+    \par
+    {\ABNTEXchapterfont\imprimirdata}
+  \end{center}
+}%
